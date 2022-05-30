@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package main;
+
+option go_package = "./protos";
+
+service HealthService {
+  rpc GetSystemHealth(HealthRequest) returns (HealthResponse) {}
+  rpc GetCpuData(stream CpuRequest) returns (stream CpuResponse) {}
+}
+
+message HealthRequest {
+  string type = 1;
+}
+
+message HealthResponse {
+  string os = 1;
+  string data = 2;
+}
+
+message CpuRequest {
+
+}
+
+message CpuResponse {
+  string data = 1;
+}
